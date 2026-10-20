@@ -2,6 +2,8 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
+@custom-variant dark (&:is(.dark *));
+
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
@@ -12,11 +14,16 @@
   --color-hero-ink: var(--hero-ink);
   --color-muted-ink: var(--muted-ink);
   --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
   --color-gold-dark: var(--gold-dark);
   --color-cream: var(--cream);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
   --color-sand: var(--sand);
   --color-line: var(--line);
+  --color-body: var(--body);
   --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
   --color-coal: var(--coal);
   --color-beige: var(--beige);
   --color-divider-dark: var(--divider-dark);
@@ -31,15 +38,22 @@
   --ink: #171512;
   --hero-ink: #2d1a0f;
   --muted-ink: #736b62;
-  --gold: #be9250;
+  --gold: #c39a54;
+  --gold-hover: #d4ad6a;
   --gold-dark: #a67a3a;
   --cream: #f7f4ee;
+  --card: #f5efe3;
+  --card-border: #e6dcc6;
   --sand: #eee9e1;
   --line: #d9d1c4;
+  --body: #5f5a52;
   --night: #0d0d0e;
+  --night-soft: #1a1a1a;
   --coal: #171512;
   --beige: #e9d6b0;
   --divider-dark: #34302a;
+  --border: #ebe6dc;
+  --ring: #c39a54;
 }
 
 @layer base {
@@ -48,5 +62,46 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+}
+
+@keyframes search-highlight-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(195, 154, 84, 0);
+  }
+  20%,
+  70% {
+    box-shadow: 0 0 0 6px rgba(195, 154, 84, 0.55);
+  }
+}
+
+.search-highlight {
+  animation: search-highlight-pulse 2.4s ease-in-out;
+}
+
+.search-dialog[open] {
+  animation: search-dialog-in 0.2s ease-out;
+}
+
+@keyframes search-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-highlight {
+    animation: none;
+    outline: 2px solid var(--gold);
+    outline-offset: 6px;
+  }
+  .search-dialog[open] {
+    animation: none;
   }
 }
