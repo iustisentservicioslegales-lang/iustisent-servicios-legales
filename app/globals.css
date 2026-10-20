@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-hero-ink: var(--hero-ink);
+  --color-muted-ink: var(--muted-ink);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-line: var(--line);
+  --color-night: var(--night);
+  --color-coal: var(--coal);
+  --color-beige: var(--beige);
+  --color-divider-dark: var(--divider-dark);
+  --color-border: var(--line);
+  --color-ring: var(--gold);
+}
+
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #171512;
+  --ink: #171512;
+  --hero-ink: #2d1a0f;
+  --muted-ink: #736b62;
+  --gold: #be9250;
+  --gold-dark: #a67a3a;
+  --cream: #f7f4ee;
+  --sand: #eee9e1;
+  --line: #d9d1c4;
+  --night: #0d0d0e;
+  --coal: #171512;
+  --beige: #e9d6b0;
+  --divider-dark: #34302a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}

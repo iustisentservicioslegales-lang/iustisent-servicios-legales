@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --cream: #f6f2ea;
+  --card: #f5efe3;
+  --card-border: #e6dcc6;
+  --gold: #c39a54;
+  --gold-hover: #d4ad6a;
+  --ink: #141414;
+  --body: #5f5a52;
+  --night: #121212;
+  --night-soft: #1a1a1a;
+  --border: #ebe6dc;
+  --ring: #c39a54;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@keyframes search-highlight-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(195, 154, 84, 0);
+  }
+  20%,
+  70% {
+    box-shadow: 0 0 0 6px rgba(195, 154, 84, 0.55);
+  }
+}
+
+.search-highlight {
+  animation: search-highlight-pulse 2.4s ease-in-out;
+}
+
+.search-dialog[open] {
+  animation: search-dialog-in 0.2s ease-out;
+}
+
+@keyframes search-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-highlight {
+    animation: none;
+    outline: 2px solid var(--gold);
+    outline-offset: 6px;
+  }
+  .search-dialog[open] {
+    animation: none;
+  }
+}
